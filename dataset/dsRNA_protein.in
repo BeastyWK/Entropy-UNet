@@ -1,0 +1,213 @@
+###### VARIABLES #######
+variable    T equal 300
+variable    damp equal 1000
+variable    seedV equal 4928421
+variable    seedT equal 3278431
+variable    dt equal 0.1
+variable    thermointrv equal 100000
+variable    dumpintrv equal 100000
+variable    runtime equal 2000000000
+
+###### BOX ############
+units       nano
+dimension   3
+boundary    p p p
+atom_style  full
+read_data   RNA_protein_beads.data
+
+
+###### Group ############
+group      RNA type 1 2 3 4 5 6 7 8 9 
+group      Protein type 10 11 12 13
+
+###### pair styles ##########
+bond_style  harmonic
+angle_style cosine/squared
+
+# pairwise coefficients  1--P   2--A  3--U  4--C 5--G
+
+pair_style  hybrid lj1210rna/3bead 6.2 ljlambda 0.1 0 35.0 soft 25
+dielectric  80.0
+
+
+# pairwise coefficients
+
+# 1--P 2--A 3--U 4--C 5--G 6--A_H 7--U_H 8--C_H 9--G_H
+bond_coeff          1   347.350000    5.750000
+bond_coeff          2   347.350000    5.500000
+bond_coeff          3   347.350000    1.950000
+bond_coeff          4   69.4692000    5.500000
+
+angle_coeff         1   138.940000  180.000000
+angle_coeff         2   555.750000  180.000000 
+
+pair_coeff          1       1   ljlambda    27.78800   5.500    0.000000   6.174  35.000
+pair_coeff          1       2   ljlambda    27.78800   5.500    0.000000   6.174   0.000
+pair_coeff          1       3   ljlambda    27.78800   5.500    0.000000   6.174   0.000
+pair_coeff          1       4   ljlambda    27.78800   5.500    0.000000   6.174   0.000
+pair_coeff          1       5   ljlambda    27.78800   5.500    0.000000   6.174   0.000
+pair_coeff          1       6   ljlambda    0.000000   0.000    0.000000   0.000   0.000
+pair_coeff          1       7   ljlambda    0.000000   0.000    0.000000   0.000   0.000
+pair_coeff          1       8   ljlambda    0.000000   0.000    0.000000   0.000   0.000
+pair_coeff          1       9   ljlambda    0.000000   0.000    0.000000   0.000   0.000
+
+# RNA    1--P 2--A 3--U 4--C 5--G 6--A_H 7--U_H 8--C_H 9--G_H
+pair_coeff          2       2   lj1210rna/3bead   61.270000   3.300    27.78800   5.500   1   6.200
+pair_coeff          2       3   lj1210rna/3bead   68.770000   3.300    27.78800   5.500   1   6.200
+pair_coeff          2       4   lj1210rna/3bead   66.000000   3.300    27.78800   5.500   1   6.200
+pair_coeff          2       5   lj1210rna/3bead   77.600000   3.300    27.78800   5.500   1   6.200
+pair_coeff          2       6   ljlambda    0.000000   0.000    0.000000   0.000   0.000
+pair_coeff          2       7   ljlambda    0.000000   0.000    0.000000   0.000   0.000
+pair_coeff          2       8   ljlambda    0.000000   0.000    0.000000   0.000   0.000
+pair_coeff          2       9   ljlambda    0.000000   0.000    0.000000   0.000   0.000
+
+pair_coeff          3       3   lj1210rna/3bead   44.110000   3.300    27.78800   5.500   1   6.200
+pair_coeff          3       4   lj1210rna/3bead   59.190000   3.300    27.78800   5.500   1   6.200
+pair_coeff          3       5   lj1210rna/3bead   73.850000   3.300    27.78800   5.500   1   6.200
+pair_coeff          3       6   ljlambda    0.000000   0.000    0.000000   0.000   0.000
+pair_coeff          3       7   ljlambda    0.000000   0.000    0.000000   0.000   0.000
+pair_coeff          3       8   ljlambda    0.000000   0.000    0.000000   0.000   0.000
+pair_coeff          3       9   ljlambda    0.000000   0.000    0.000000   0.000   0.000
+
+pair_coeff          4       4   lj1210rna/3bead   57.380000   3.300    27.78800   5.500   1   6.200
+pair_coeff          4       5   lj1210rna/3bead   64.750000   3.300    27.78800   5.500   1   6.200
+pair_coeff          4       6   ljlambda    0.000000   0.000    0.000000   0.000   0.000
+pair_coeff          4       7   ljlambda    0.000000   0.000    0.000000   0.000   0.000
+pair_coeff          4       8   ljlambda    0.000000   0.000    0.000000   0.000   0.000
+pair_coeff          4       9   ljlambda    0.000000   0.000    0.000000   0.000   0.000
+
+pair_coeff          5       5   lj1210rna/3bead   78.640000   3.300    27.78800   5.500   1   6.200
+pair_coeff          5       6   ljlambda    0.000000   0.000    0.000000   0.000   0.000
+pair_coeff          5       7   ljlambda    0.000000   0.000    0.000000   0.000   0.000
+pair_coeff          5       8   ljlambda    0.000000   0.000    0.000000   0.000   0.000
+pair_coeff          5       9   ljlambda    0.000000   0.000    0.000000   0.000   0.000
+
+pair_coeff          6       6   ljlambda    0.000000   0.000    0.000000   0.000   0.000
+pair_coeff          6       7   lj1210rna/3bead    60.77000   1.650    0.000000   0.000   0   3.300
+pair_coeff          6       8   ljlambda    0.000000   0.000    0.000000   0.000   0.000
+pair_coeff          6       9   ljlambda    0.000000   0.000    0.000000   0.000   0.000
+
+pair_coeff          7       7   ljlambda    0.000000   0.000    0.000000   0.000   0.000
+pair_coeff          7       8   ljlambda    0.000000   0.000    0.000000   0.000   0.000
+pair_coeff          7       9   ljlambda    0.000000   0.000    0.000000   0.000   0.000
+
+pair_coeff          8       8   ljlambda    0.000000   0.000    0.000000   0.000   0.000
+pair_coeff          8       9   lj1210rna/3bead   68.730000   1.650    0.000000   0.000   0   3.300
+
+pair_coeff          9       9   ljlambda    0.000000   0.000    0.000000   0.000   0.000
+
+
+###     Protein-RNA
+pair_coeff          1       10   ljlambda    5.000000   5.500    0.000000   6.174   0.000 
+pair_coeff          1       11   ljlambda    5.000000   5.500    0.000000   6.174   0.000
+pair_coeff          1       12   ljlambda    5.000000   5.500    0.000000   6.174   0.000 
+pair_coeff          1       13   soft   -70.0000  14.000
+pair_coeff          1       14   soft   -68.0000  14.000
+ 
+pair_coeff          2       10   ljlambda    5.000000   5.500    0.000000   6.174   0.000
+pair_coeff          2       11   ljlambda    5.000000   5.500    0.000000   6.174   0.000
+pair_coeff          2       12   ljlambda    5.000000   5.500    0.000000   6.174   0.000
+pair_coeff          2       13   ljlambda    5.000000   5.500    0.000000   6.174   0.000
+pair_coeff          2       14   ljlambda    5.000000   5.500    0.000000   6.174   0.000
+
+pair_coeff          3       10   ljlambda    5.000000   5.500    0.000000   6.174   0.000 
+pair_coeff          3       11   ljlambda    5.000000   5.500    0.000000   6.174   0.000
+pair_coeff          3       12   ljlambda    5.000000   5.500    0.000000   6.174   0.000 
+pair_coeff          3       13   ljlambda    5.000000   5.500    0.000000   6.174   0.000
+pair_coeff          3       14   ljlambda    5.000000   5.500    0.000000   6.174   0.000
+
+pair_coeff          4       10   ljlambda    5.000000   5.500    0.000000   6.174   0.000 
+pair_coeff          4       11   ljlambda    5.000000   5.500    0.000000   6.174   0.000
+pair_coeff          4       12   ljlambda    5.000000   5.500    0.000000   6.174   0.000 
+pair_coeff          4       13   ljlambda    5.000000   5.500    0.000000   6.174   0.000
+pair_coeff          4       14   ljlambda    5.000000   5.500    0.000000   6.174   0.000
+
+pair_coeff          5       10   ljlambda    5.000000   5.500    0.000000   6.174   0.000 
+pair_coeff          5       11   ljlambda    5.000000   5.500    0.000000   6.174   0.000
+pair_coeff          5       12   ljlambda    5.000000   5.500    0.000000   6.174   0.000 
+pair_coeff          5       13   ljlambda    5.000000   5.500    0.000000   6.174   0.000
+pair_coeff          5       14   ljlambda    5.000000   5.500    0.000000   6.174   0.000
+
+pair_coeff          6       10   ljlambda    0.000000   0.000    0.000000   0.000   0.000 
+pair_coeff          6       11   ljlambda    0.000000   0.000    0.000000   0.000   0.000
+pair_coeff          6       12   ljlambda    0.000000   0.000    0.000000   0.000   0.000 
+pair_coeff          6       13   ljlambda    0.000000   0.000    0.000000   0.000   0.000
+pair_coeff          6       14   ljlambda    0.000000   0.000    0.000000   0.000   0.000
+
+pair_coeff          7       10   ljlambda    0.000000   0.000    0.000000   0.000   0.000 
+pair_coeff          7       11   ljlambda    0.000000   0.000    0.000000   0.000   0.000
+pair_coeff          7       12   ljlambda    0.000000   0.000    0.000000   0.000   0.000 
+pair_coeff          7       13   ljlambda    0.000000   0.000    0.000000   0.000   0.000
+pair_coeff          7       14   ljlambda    0.000000   0.000    0.000000   0.000   0.000
+
+pair_coeff          8       10   ljlambda    0.000000   0.000    0.000000   0.000   0.000 
+pair_coeff          8       11   ljlambda    0.000000   0.000    0.000000   0.000   0.000
+pair_coeff          8       12   ljlambda    0.000000   0.000    0.000000   0.000   0.000 
+pair_coeff          8       13   ljlambda    0.000000   0.000    0.000000   0.000   0.000
+pair_coeff          8       14   ljlambda    0.000000   0.000    0.000000   0.000   0.000
+
+pair_coeff          9       10   ljlambda    0.000000   0.000    0.000000   0.000   0.000 
+pair_coeff          9       11   ljlambda    0.000000   0.000    0.000000   0.000   0.000
+pair_coeff          9       12   ljlambda    0.000000   0.000    0.000000   0.000   0.000 
+pair_coeff          9       13   ljlambda    0.000000   0.000    0.000000   0.000   0.000
+pair_coeff          9       14   ljlambda    0.000000   0.000    0.000000   0.000   0.000
+
+pair_coeff          10       10   ljlambda    5.000000   5.500    0.000000   6.174   0.000
+pair_coeff          10       11   soft   -27.78800  5.000
+pair_coeff          10       12   ljlambda    5.000000   5.500    0.000000   6.174   0.000 
+pair_coeff          10       13   ljlambda    5.000000   5.500    0.000000   6.174   0.000
+pair_coeff          10       14   ljlambda    5.000000   5.500    0.000000   6.174   0.000
+
+pair_coeff          11       11   ljlambda    5.000000   5.500    0.000000   6.174   0.000
+pair_coeff          11       12   ljlambda    5.000000   5.500    0.000000   6.174   0.000 
+pair_coeff          11       13   ljlambda    5.000000   5.500    0.000000   6.174   0.000
+pair_coeff          11       14   ljlambda    5.000000   5.500    0.000000   6.174   0.000
+
+pair_coeff          12       12   ljlambda    5.000000   5.500    0.000000   6.174   0.000
+pair_coeff          12       13   ljlambda    5.000000   5.500    0.000000   6.174   0.000
+pair_coeff          12       14   ljlambda    5.000000   5.500    0.000000   6.174   0.000
+
+pair_coeff          13       13   ljlambda    5.000000   5.500    0.000000   6.174   0.000
+pair_coeff          13       14   ljlambda    5.000000   5.500    0.000000   6.174   0.000
+
+pair_coeff          14       14   ljlambda    5.000000   10.50    0.000000   11.20   0.000
+
+
+
+special_bonds lj/coul 0.0 1.0 1.0
+
+neighbor    2.0 multi
+
+### Energy minimization
+minimize    1.0e-4 1.0e-6 1000 100000
+
+### production ###
+
+#### Time step
+reset_timestep  0
+timestep        ${dt} #ns
+
+### Ensemble / Thermostat
+run_style       verlet
+velocity        all create $T ${seedV}
+
+fix             fix1 all nve
+fix             fix2 all langevin $T $T ${damp} ${seedT} 
+
+### Outputting useful information in the log file
+thermo          ${thermointrv}
+thermo_style    custom step temp etotal evdwl ecoul ebond eangle
+
+# Saving the simulation snapshots in a trajectory file
+dump            mydump1 all custom ${dumpintrv} rna.dumplammps id type x y z
+dump_modify     mydump1 sort id
+
+# Specifying the runlength
+#restart  ${runtime} restart.dsRNA
+run             ${runtime}
+write_data      an.*
+
+# Writing restart files
+run             ${runtime}
+write_data      an.*
+
