@@ -19,3 +19,5 @@ run train_entropy.py
 
 Predict CRE:
 run prefict_entropy.py
+
+
