@@ -63,9 +63,9 @@ pair_coeff          2       7   ljlambda    0.000000   0.000    0.000000   0.000
 pair_coeff          2       8   ljlambda    0.000000   0.000    0.000000   0.000   0.000
 pair_coeff          2       9   ljlambda    0.000000   0.000    0.000000   0.000   0.000
 
-pair_coeff          3       3   lj1210rna/3bead   44.110000   3.300    27.78800   5.500   1   6.200
-pair_coeff          3       4   lj1210rna/3bead   59.190000   3.300    27.78800   5.500   1   6.200
-pair_coeff          3       5   lj1210rna/3bead   73.850000   3.300    27.78800   5.500   1   6.200
+pair_coeff          3       3   rna/3bead   44.110000   3.300    27.78800   5.500   1   6.200
+pair_coeff          3       4   rna/3bead   59.190000   3.300    27.78800   5.500   1   6.200
+pair_coeff          3       5   rna/3bead   73.850000   3.300    27.78800   5.500   1   6.200
 pair_coeff          3       6   ljlambda    0.000000   0.000    0.000000   0.000   0.000
 pair_coeff          3       7   ljlambda    0.000000   0.000    0.000000   0.000   0.000
 pair_coeff          3       8   ljlambda    0.000000   0.000    0.000000   0.000   0.000
