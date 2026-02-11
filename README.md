@@ -1,5 +1,5 @@
 Description:
-Entropy-Unet is a deep neural network model trained to predict entropy by utilizing conformational features extracted from trajectory files generated through meta-dynamics simulations
+Entropy-Unet is a deep neural network based on the U-Net architecture, trained to predict per‑particle entropy probability distributions. The model leverages conformational features extracted from metadynamics trajectory files. Feature generation relies on LAMMPS' compute entropy/atom command, and training labels are produced via the CRE_label.py script.
 
 Overview:
 Metadynamics simulations generate extensive conformational ensembles. Entropy-Unet converts these ensembles into the coordination resolved entropy (CRE). By combining:
