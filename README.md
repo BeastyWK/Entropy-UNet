@@ -12,7 +12,7 @@ Reference entropy labels – computed by the CRE method,
 
 the model learns to directly map local structural descriptors to per‑particle entropy probabilities. The output is a probability distribution of entropy values for each particle, enabling detailed analysis of entropy in complex molecular systems.
 
-System Requirements
+System Requirements:
 Operating System: Linux (recommended) or Windows
 
 Python: 3.7
@@ -31,8 +31,8 @@ numpy 1.23.5
 
 Note: GPU acceleration is strongly advised for training. The specified versions have been tested; newer versions may work but are not guaranteed.
 
-Feature Engineering with LAMMPS
-Conformational features are extracted from metadynamics trajectory files using the LAMMPS compute entropy/atom command. This compute calculates an entropy estimate for each atom based on the local environment.
+Feature Engineering with LAMMPS:
+Conformational features are extracted from metadynamics trajectory files using the LAMMPS compute entropy/atom command. This compute calculates an entropy estimate for each particle based on the local environment.
 
 CRE Lable engineering:
 run CRE_lable.py
