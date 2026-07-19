@@ -45,3 +45,5 @@ run prefict_entropy.py
 
 Result:
 Per-particle entropy probability distribution
+
+lammps coede from https://github.com/utkarsk/CG-DNA-model
