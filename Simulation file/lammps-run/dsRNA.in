@@ -28,7 +28,7 @@ angle_style cosine/squared
 
 # pairwise coefficients  1--P   2--A  3--U  4--C 5--G
 
-pair_style  hybrid rna/3bead 6.2 ljlambda 0.1 0 35.0 soft 25
+pair_style  hybrid rna/3bead 6.2 ljlambda 300 100 0 35.0 soft 25
 dielectric  80.0
 
 
@@ -43,7 +43,7 @@ bond_coeff          4   69.4692000    5.500000
 angle_coeff         1   138.940000  180.000000
 angle_coeff         2   555.750000  180.000000 
 
-pair_coeff          1       1   ljlambda    27.78800   5.500    0.000000   6.174  35.000
+pair_coeff          1       1   ljlambda    27.78800   5.500    0.000000   6.174  
 pair_coeff          1       2   ljlambda    27.78800   5.500    0.000000   6.174   0.000
 pair_coeff          1       3   ljlambda    27.78800   5.500    0.000000   6.174   0.000
 pair_coeff          1       4   ljlambda    27.78800   5.500    0.000000   6.174   0.000
